@@ -44,7 +44,7 @@ export default function Home() {
     e.preventDefault();
     if (!query.trim() || isLoading) return;
 
-    const userMessage = { role: 'user', content: query };
+    const userMessage = { role: 'user' as 'user', content: query };
     setMessages(prev => [...prev, userMessage]);
     setQuery('');
     setIsLoading(true);
@@ -78,13 +78,13 @@ export default function Home() {
       }
 
       // Add the complete message to the messages array
-      setMessages(prev => [...prev, { role: 'assistant', content: fullMessage }]);
+      setMessages(prev => [...prev, { role: 'assistant' as 'assistant', content: fullMessage }]);
       setCurrentStreamingMessage('');
     } catch (error) {
       console.error('Error:', error);
       setMessages(prev => [
         ...prev,
-        { role: 'assistant', content: 'I apologize, but I encountered an error. Please try again.' },
+        { role: 'assistant' as 'assistant', content: 'I apologize, but I encountered an error. Please try again.' },
       ]);
     } finally {
       setIsLoading(false);
@@ -153,6 +153,9 @@ export default function Home() {
             <button className="px-4 py-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
               Sign In
             </button>
+            <a href="/signup" className="px-4 py-2 rounded-full text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
+              Sign Up
+            </a>
             <button className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition-all duration-200">
               Get Started
             </button>
